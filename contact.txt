@@ -46,24 +46,47 @@ Greensboro, NC
 <br><br><br>
 <u>Phone:</u> (336) 989-0633<br>
 <br>
-<em>Please call only between<br> 
+<em>Please call only between<br>
 5pm - 11pm during a week<br>
 and anytime during a weekend</em>
 </div>
     </div>
     <div class="row">
     <div class="column">
- 
-      <form method="POST" action="contactform.php" enctype="multipart/form-data">
+
+      <form method="POST" action="contactform.php" name="contactform" id="contactform">
         <label for="name">Name</label>
         <input type="text" id=name" name="name" placeholder="Your name..">
         <label for="email">Email</label>
         <input type="text" id="email" name="email" placeholder="Your email..">
         <label for="message">Message</label>
         <textarea id="message" name="message" placeholder="Write something.." style="height:80px"></textarea>
-        <input type="submit" value="Submit">
+        <input type="submit" name="submit" value="Submit">
       </form>
-     
+      <script>
+      document.contactform.onsubmit=function()
+      {
+      if(document.contactform.name.value =='')
+      {
+      alert("Please enter your name");
+      document.contactform.name.focus();
+      return false;
+      }
+      else if(document.contactform.email.value =='')
+      {
+      alert("Please enter your email address");
+      document.contactform.email.focus();
+      return false;
+      }
+      else if(document.contactform.message.value =='')
+      {
+      alert("Please enter your message");
+      document.contactform.message.focus();
+      return false;
+      }
+      return true;
+      }
+
     </div>
   </div>
 

@@ -1,27 +1,19 @@
-<?php 
-$msg = "";
-use  PHPMailer\PHPMailer\PHPMailer;
-include_once "PHPMailer/PHPMailer.php";
-include_once "PHPMailer/Exception.php";
-	
-if (isset($_POST['submit'])) {
-        $subject = $_POST['subject'];
+<?php
+
+if (empty($_POST['submit']))
+{
+	echo "Form is not submitted";
+	exit;
+}
+if (empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message']))
+{
+	echo "Please fill the form";
+	exit;
+}
+  $name = $_POST['name'];
 	$email =  $_POST['email'];
 	$message = $_POST['message'];
-	
-	$mail = new PHPMailer();
-	$mail->addAddress(address: 'violettamaj53@gmail.com');
-	$mail->setFrom($email);
-	$mail->Subject = $subject;
-	$mail->isHTML(isHtml:true);
-	$mail->body = $message;
-	
-	if (email->send())
-		$msg = "Your Message has been sent!";
-	else
-		$msg = "Please try again!";
-		
-	}
-
+	mail ( 'violettamaj53@gmail.com' , 'New form submission' ,
+	 'New form submission: Name: $name, Email: $email, Message: $message' );
+	header('Location: ContactThankYou.html');
 ?>
-    <?php if ($msg != "") echo "$msg<br>"; ?>
